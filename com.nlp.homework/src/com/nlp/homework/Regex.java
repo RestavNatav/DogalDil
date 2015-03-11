@@ -1,7 +1,6 @@
 package com.nlp.homework;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -10,35 +9,34 @@ public class Regex {
 	private Pattern pattern ;
 	private Matcher matcher ;
 	private ArrayList<String> pairs ;
-	private HashMap<String,String> info ;
+	private ArrayList<String> keys;
+	private ArrayList<String> values;
 	public Regex(){
 		
 		String regex = "(<td width=\"100\">)(.*?)(</td>\\n\\s+<td>)(.*?)(</td>)";
 		
 		pattern = Pattern.compile(regex, Pattern.MULTILINE);
 		pairs = new ArrayList<String>();
-		info = new HashMap<String,String>();
+		keys = new ArrayList<String>();
+		values = new ArrayList<String>();
 	}
 	
 	public void printInfo(){
 		String print;
-		for(String key : info.keySet()){
-			print =key + (key.length() >= 9 ? "\t\t: " : "\t\t\t: ") + info.get(key) ;
+		for(int i=0 ; i<keys.size() ; i++){
+			print =keys.get(i) + (keys.get(i).length() >= 9 ? "\t\t: " : "\t\t\t: ") + values.get(i) ;
 			System.out.println(print);
 		}
 	}
 	
 	public String getInfo(){
-		String print = "";
-		for(String key : info.keySet()){
-			print +=key + (key.length() >= 9 ? "\t\t: " : "\t\t\t: ") + info.get(key) +"\n";
+		String print ="";
+		for(int i=0 ; i<keys.size() ; i++){
+			print =keys.get(i) + (keys.get(i).length() >= 9 ? "\t\t: " : "\t\t\t: ") + values.get(i) ;
 		}
 		return print;
 	}
-	@SuppressWarnings("rawtypes")
-	public HashMap getPairs(){
-		return this.info;
-	}
+
 	
 	
 	public void SetHTML(String html){
@@ -78,13 +76,10 @@ public class Regex {
 				}
 			}
 			
-			info.put(key, value);
+			keys.add(key);
+			values.add(value);
 		}
 	}
-	
-	
-	
-	
 	
 	
 }
