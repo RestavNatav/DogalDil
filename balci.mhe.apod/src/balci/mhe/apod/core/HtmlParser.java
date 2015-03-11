@@ -26,6 +26,11 @@ public class HtmlParser {
 		}
 	}
 	
+	public void PrintSource(){
+		System.out.println(this.Source);
+	}
+	
+	
 	public void FindPicture() throws Exception{
 		int endPoint = this.Source.indexOf(".jpg");
 		int startPoint = 0;

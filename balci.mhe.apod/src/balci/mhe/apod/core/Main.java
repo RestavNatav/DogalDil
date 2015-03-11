@@ -14,7 +14,8 @@ public class Main {
 		for(String s : FileList){
 			Parser.getHtmlSource(s);
 			try {
-				Parser.FindPicture();
+				Parser.PrintSource();
+				//Parser.FindPicture();
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
